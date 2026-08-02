@@ -4,7 +4,7 @@ Access the api using Requestly app.
 
 ## Tasks
 * Create CustomerController class, added CRUD methods with simple String return statements.
-* annotated the class with @RestController("/customer")
+* annotated the class with @RestController, @RequestMapping("/customer")
 * Annotated the class's methods with @GetMapping, @PostMapping, @PutMapping, @DeleteMapping
 * Updated the configuration in application.properties file.
   * provided the context path as /customer-1
