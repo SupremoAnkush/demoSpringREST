@@ -14,7 +14,7 @@ public class CustomerDTO {
     Long phoneNo;
     String name;
     String email;
-    int age;
+    Integer age;
     char gender;
     List<FriendFamilyDTO> friendFamily;
     String password;

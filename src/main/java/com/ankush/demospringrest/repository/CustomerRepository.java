@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public class CustomerRepository {
-    List<CustomerDTO> customers = null;
 
+    private List<CustomerDTO> customers = new ArrayList<>();
 //   This is equivalent to constructor. Here, populates the DTOs in hard coded way
     @PostConstruct
     public void initializer(){
@@ -53,4 +53,7 @@ public class CustomerRepository {
         return  customers;
     }
 
+    public void deleteCustomer(CustomerDTO customer) {
+        customers.remove(customer);
+    }
 }

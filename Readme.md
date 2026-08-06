@@ -23,3 +23,14 @@ Learn usage of ResponseEntity
     }
 
 * Create fetchCustomer() URI /customers with GET Mapping, uses produces attribute
+
+# Objective 3
+Update the code as per the usage of Injection in URI in 3 types
+* @PathVariables
+  * Update the controller class - Modified Update and delete methods
+  * updated the pom, Customer DTO age variable
+  * updated the service and repository class
+* @RequestParams
+* @MatrixVariable
+
+

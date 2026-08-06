@@ -29,14 +29,14 @@ public class CustomerController {
 //        Returns the response with response body and status code.
         return ResponseEntity.ok(response);
     }
-    @PutMapping
-    public String updateCustomer(){
+    @PutMapping(value = "/{phoneNo}", consumes = "application/json")
+    public String updateCustomer(@PathVariable(name = "phoneNo") long phoneNo, @RequestBody CustomerDTO customerDTO){
 //        This method will update details of existing customer.
-        return "customer details updated successfully" ;
+        return customerService.updateCustomer(phoneNo, customerDTO);
     }
-    @DeleteMapping
-    public String deleteCustomer(){
+    @DeleteMapping(value = "/{phoneNo}")
+    public String deleteCustomer(@PathVariable("phoneNo") long phoneNo){
 //        This method will delete a customer.
-        return "customer details deleted successfully" ;
+        return customerService.deleteCustomer(phoneNo);
     }
 }
