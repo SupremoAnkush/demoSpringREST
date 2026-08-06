@@ -27,10 +27,14 @@ Learn usage of ResponseEntity
 # Objective 3
 Update the code as per the usage of Injection in URI in 3 types
 * @PathVariables
-  * Update the controller class - Modified Update and delete methods
+  * Updated the controller class - Modified Update and delete methods
   * updated the pom, Customer DTO age variable
   * updated the service and repository class
 * @RequestParams
+  * Created new controller CallDetailsController that will Fetch call details based on request parameters passed with URI
+  * Created 2 new DTO class CallDetailsDTO, ErrorMessage 
+  * Created CallDetailsRepository
+  * Created CallDetailsService 
 * @MatrixVariable
 
 

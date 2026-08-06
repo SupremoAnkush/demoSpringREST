@@ -4,12 +4,13 @@ import com.ankush.demospringrest.dto.CustomerDTO;
 import com.ankush.demospringrest.dto.FriendFamilyDTO;
 import com.ankush.demospringrest.dto.PlanDTO;
 import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Component
 public class CustomerRepository {
 
     private List<CustomerDTO> customers = new ArrayList<>();
@@ -44,8 +45,9 @@ public class CustomerRepository {
     }
 
 //    Adds the received Customer object to customer list
-    public void createCustomer(CustomerDTO customerDTO){
+    public String createCustomer(CustomerDTO customerDTO){
         customers.add(customerDTO);
+        return "Customer with "+customerDTO.getPhoneNo()+" added successfully";
     }
 
 //    Returns a list of customers
@@ -53,7 +55,40 @@ public class CustomerRepository {
         return  customers;
     }
 
-    public void deleteCustomer(CustomerDTO customer) {
-        customers.remove(customer);
+//    Delete customers
+    public String deleteCustomer(long phoneNo) {
+        String response = "Customer of : " + phoneNo + " \t does not exist";
+        for (CustomerDTO customer : customers) {
+            if (customer.getPhoneNo() == phoneNo){
+            customers.remove(customer);
+            response = customer.getName() + " of phone Number " + customer.getPhoneNo() + " \tgot deleted successfully";
+            break;
+        }
+        }
+        return response;
     }
+
+
+//    Updates customers
+    public String updateCustomer(long phoneNumber, CustomerDTO customerDTO){
+        String response = "Customer of : "+phoneNumber+" \tdoes not exist";
+        for (CustomerDTO customer : customers) {
+            if (customer.getPhoneNo() == phoneNumber){
+                if (customerDTO.getName()!=null)
+                    customer.setName(customerDTO.getName());
+                if (customerDTO.getAddress()!=null)
+                    customer.setAddress(customerDTO.getAddress());
+                if (customerDTO.getPassword()!=null)
+                    customer.setPassword(customerDTO.getPassword());
+
+                customers.set(customers.indexOf(customer), customer);
+                response = "Customer of Phone Number "+customer.getPhoneNo()+"\t got updated successfully";
+                break;
+
+            }
+        }
+        return response;
+
+    }
+
 }
